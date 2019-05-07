@@ -138,6 +138,16 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testBlur(int x, int y, int w, int h, int n)
+{
+   Picture redMoto = new Picture("redMotorcycle.jpg");
+   for (int i = 0; i<n; i++){
+      redMoto.blur(x,y,w,h);
+    }
+    redMoto.explore();
+}
+
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -162,8 +172,9 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    testEdgeDetection();
-    testEdgeDetection2();
+    //testEdgeDetection();
+    //testEdgeDetection2();
+    testBlur(180,160,25,25,10); 
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);

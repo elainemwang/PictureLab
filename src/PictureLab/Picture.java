@@ -476,6 +476,36 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void blur(int x, int y, int w, int h){
+    Pixel[][] pixels = this.getPixels2D();
+    int rAvg = 0;
+    int bAvg = 0;
+    int gAvg = 0;
+
+    for (int row = x; row < x+h; row++)
+    {
+      for (int col = y; col < y+w; col++)
+      {
+        rAvg = 0;
+        bAvg = 0;
+        gAvg = 0;
+        for(int r = row - 1; r <= row + 1; r++){
+            for(int c = col - 1; c <= col + 1; c++){
+                rAvg += pixels[r][c].getRed();
+                bAvg += pixels[r][c].getBlue();
+                gAvg += pixels[r][c].getGreen();
+            }
+        }
+        rAvg = rAvg/9;
+        bAvg = bAvg/9;
+        gAvg = gAvg/9;
+        pixels[row][col].setRed(rAvg);
+        pixels[row][col].setBlue(bAvg);
+        pixels[row][col].setGreen(gAvg);
+      }
+    }
+  }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
